@@ -105,7 +105,7 @@ public class DetailActivity extends AppCompatActivity {
         protected void onPostExecute(LineSet lineSet) {
             super.onPostExecute(lineSet);
             Paint paint=new Paint();
-            paint.setColor(Color.WHITE);
+            paint.setColor(Color.BLUE);
             paint.setStyle(Paint.Style.STROKE);
             paint.setAntiAlias(true);
             paint.setStrokeWidth(Tools.fromDpToPx(1f));
@@ -116,7 +116,7 @@ public class DetailActivity extends AppCompatActivity {
                     .setLabelsColor(Color.BLACK)
                     .setXAxis(false)
                     .setYAxis(false)
-                    .setBorderSpacing(Tools.fromDpToPx(5));
+                    .setBorderSpacing(Tools.fromDpToPx(5)).setGrid(5,0,paint);
             String sRange = DetailActivity.formatDate(String.valueOf(minDate)) + " - " + DetailActivity.formatDate(String.valueOf(maxDate));
             range.setText(sRange);
             if(lineSet.size()>0){
