@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         toolbar=(Toolbar)findViewById(R.id.tool);
         toolbar.setTitle("Stock Hawk");
-        //getSupportActionBar().setDisplayShowTitleEnabled(true);
+        setSupportActionBar(toolbar);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setRefreshing(true);
         onRefresh();
@@ -185,6 +185,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             PrefUtils.toggleDisplayMode(this);
             setDisplayModeMenuItemIcon(item);
             adapter.notifyDataSetChanged();
+            return true;
+        }
+        if(id == R.id.action_settings){
             return true;
         }
         return super.onOptionsItemSelected(item);
