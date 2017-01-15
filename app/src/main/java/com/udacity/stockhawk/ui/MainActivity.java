@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-    private boolean networkUp() {
+    private  boolean networkUp() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
@@ -116,7 +116,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void button(@SuppressWarnings("UnusedParameters") View view) {
-        new AddStockDialog().show(getFragmentManager(), "StockDialogFragment");
+        if(networkUp()) {
+            new AddStockDialog().show(getFragmentManager(), "StockDialogFragment");
+        }
+        else{
+            Toast.makeText(this,R.string.no_connectivity_dialog,Toast.LENGTH_SHORT).show();
+        }
     }
 
     void addStock(String symbol) {
